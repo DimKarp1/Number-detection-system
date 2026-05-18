@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <title>YOLO12 Number Recognition Test Client</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <main class="page">
+    <h1>YOLO12 Number Recognition Test Client</h1>
+    <div class="subtitle">
+      Тестовый клиент для загрузки фотографий и проверки распознавания номеров участников.
+    </div>
+
+    <section class="card">
+      <h2>Состояние системы</h2>
+
+      <div class="row">
+        <button id="checkStatusBtn">Проверить backend</button>
+        <button id="clearBtn" class="secondary">Очистить вывод</button>
+      </div>
+
+      <div class="muted small" style="margin-top: 10px;">
+        Frontend обращается к backend через nginx proxy: <code>/api</code>.
+      </div>
+    </section>
+
+    <section class="card" style="margin-top: 16px;">
+      <h2>Загрузка изображений</h2>
+
+      <div class="field">
+        <label for="filesInput">Файлы изображений</label>
+        <input id="filesInput" type="file" accept="image/*" multiple />
+        <div class="muted small">
+          Можно выбрать один файл или сразу несколько.
+        </div>
+      </div>
+
+      <button id="uploadBtn">Загрузить и распознать</button>
+    </section>
+
+    <section class="card" style="margin-top: 16px;">
+      <h2>Проверить задачу по ID</h2>
+
+      <div class="field">
+        <label for="taskIdInput">Task ID</label>
+        <input id="taskIdInput" type="text" placeholder="UUID задачи" />
+      </div>
+
+      <button id="getTaskBtn">Проверить задачу</button>
+
+      <div class="muted small" style="margin-top: 8px;">
+        После загрузки задача обновляется автоматически. Ручная проверка нужна для уже созданных задач.
+      </div>
+    </section>
+
+    <section class="card" style="margin-top: 16px;">
+      <h2>Результат</h2>
+      <div id="result"></div>
+    </section>
+
+    <section class="card" style="margin-top: 16px;">
+      <h2>Raw log</h2>
+      <div id="log" class="log"></div>
+    </section>
+  </main>
+  <script src="/app.js"></script>
+</body>
+</html>
